@@ -6,11 +6,11 @@ from .models import Author, Genre, Language, Book, BookInstance
 
 class BooksInstanceInline(admin.TabularInline):
     model = BookInstance
-    def get_extra(self, request, obj=None, **kwargs):
-    if obj.BookInstance.count() :
-        return 0
-    else:
-        return 1
+#    def get_extra(self, request, obj=None, **kwargs):
+#    if obj.BookInstance.count() :
+#        return 0
+#    else:
+#        return 1
 
 class BookInline(admin.TabularInline):
     model = Book
