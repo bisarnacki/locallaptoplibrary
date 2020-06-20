@@ -33,3 +33,5 @@ urlpatterns += [
 ]
 # Use static() to add url mapping to serve static files during development (only)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+admin.site.site_header = 'LLLL Admin Page'
