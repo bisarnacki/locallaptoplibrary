@@ -120,6 +120,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Updating db/sending cookie on every request 
+# Update db/sending cookie on every request 
 
 SESSION_SAVE_EVERY_REQUEST = True
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
