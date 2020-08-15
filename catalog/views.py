@@ -1,19 +1,19 @@
 from django.shortcuts import render
 from django.views import generic
-from catalog.models import Book, Author, BookInstance, Genre
+from catalog.models import Laptop, Manufacturer, LaptopInstance, Make
 
 def index(request):
     """View function for home page of site."""
 
     # Generate counts of some of the main objects
-    num_books = Book.objects.all().count()
-    num_instances = BookInstance.objects.all().count()
+    num_books = Laptop.objects.all().count()
+    num_instances = LaptopInstance.objects.all().count()
     
-    # Available books (status = 'a')
-    num_instances_available = BookInstance.objects.filter(status__exact='a').count()
+    # Available laptops (status = 'a')
+    num_instances_available = LaptopInstance.objects.filter(status__exact='a').count()
     
     # The 'all()' is implied by default.    
-    num_authors = Author.objects.count()
+    num_manufacturers = Manufacturer.objects.count()
     
     # Number of visits to this view, as counted in the session variable.
     num_visits = request.session.get('num_visits', 0)
@@ -30,8 +30,8 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
 
-class BookListView(generic.ListView):
-    model = Book
+class LaptopListView(generic.ListView):
+    model = Laptop
     paginate_by = 10
 
 """class BookListView(generic.ListView):
@@ -41,7 +41,7 @@ class BookListView(generic.ListView):
     template_name = 'books/my_arbitrary_template_name_list.html'  # Specify your own template name/location"""
 
 def get_queryset(self):
-    return Book.objects.filter(title__icontains='war')[:5] # Get 5 books containing the title war
+    return Laptop.objects.filter(title__icontains='war')[:5] # Get 5 books containing the title war
 
 class BookDetailView(generic.DetailView):
-    model = Book
+    model = Laptop

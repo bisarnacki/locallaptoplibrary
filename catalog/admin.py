@@ -7,7 +7,7 @@ from .models import Manufacturer, Make, Language, Laptop, LaptopInstance
 class LaptopsInstanceInline(admin.TabularInline):
     model = LaptopInstance
 #    def get_extra(self, request, obj=None, **kwargs):
-#    if obj.BookInstance.count() :
+#    if obj.LaptopInstance.count() :
 #        return 0
 #    else:
 #        return 1
