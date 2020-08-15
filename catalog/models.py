@@ -49,10 +49,10 @@ class Laptop(models.Model):
     
     display_genre.short_description = 'Genre'   
 
-class BookInstance(models.Model):
-    """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular book across whole library')
-    book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True) 
+class LaptopInstance(models.Model):
+    """Model representing a specific laptop with a unique id (i.e. that can be borrowed from the library)."""
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular laptop')
+    laptop= models.ForeignKey('Laptop', on_delete=models.SET_NULL, null=True) 
     imprint = models.CharField(max_length=200)
     due_back = models.DateField(null=True, blank=True)
 
@@ -78,12 +78,9 @@ class BookInstance(models.Model):
         """String for representing the Model object."""
         return f'{self.id} ({self.book.title})'
 
-class Author(models.Model):
+class Manufacturer(models.Model):
     """Model representing an author."""
     first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    date_of_birth = models.DateField(null=True, blank=True)
-    date_of_death = models.DateField('Died', null=True, blank=True)
 
     class Meta:
         ordering = ['last_name', 'first_name']
